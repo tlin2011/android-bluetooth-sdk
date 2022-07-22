@@ -1,0 +1,28 @@
+
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+
+        maven(MavenPublication) {
+            groupId = "com.akgbt.btcore"
+            artifactId = "abtcore"
+            version = "1.0.0"
+            description = "bt tool"
+
+            artifact("$buildDir/outputs/aar/btcore-debug.aar")
+        }
+    }
+    repositories {
+        maven {
+            allowInsecureProtocol true
+            url = 'http://127.0.0.1:8081/repository/maven-releases/'
+            credentials {
+                it.username = "admin"
+                it.password = "admin"
+            }
+        }
+    }
+}
+
+
